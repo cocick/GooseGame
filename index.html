@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Гусь: Га-Га-Га</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="1280" height="720"></canvas>
+
+    <div id="hud" hidden>
+      <div id="todo">
+        <h2>Пакости на сегодня</h2>
+        <ul id="todo-list"></ul>
+      </div>
+      <div id="pad-status"></div>
+      <div id="sound-hint" hidden>🔇 Кликни мышкой по игре, чтобы был звук</div>
+    </div>
+
+    <div id="title" class="overlay">
+      <div class="card">
+        <h1>ГУСЬ</h1>
+        <p class="sub">Га-га-га. Ужасный гусь против садовника.</p>
+        <table class="controls">
+          <tr><th></th><th>🎮 Xbox 360</th><th>⌨️ Клавиатура</th></tr>
+          <tr><td>Ходить</td><td>Левый стик / крестовина</td><td>WASD / стрелки</td></tr>
+          <tr><td>Бежать</td><td>RT или RB</td><td>Shift</td></tr>
+          <tr><td>Красться</td><td>LT или LB</td><td>Ctrl / C</td></tr>
+          <tr><td>ГА!</td><td>A</td><td>Пробел</td></tr>
+          <tr><td>Схватить / бросить</td><td>X или B</td><td>E</td></tr>
+          <tr><td>Пауза</td><td>Start</td><td>Esc</td></tr>
+        </table>
+        <ul class="tips">
+          <li>Тащи добычу в гнездо в левом верхнем углу.</li>
+          <li>Садовник гонится, если видит у тебя в клюве своё добро. В пруд он за тобой не полезет, а в кустах тебя не видно.</li>
+          <li>Гогот рядом с ним пугает его до икоты, но и твоя добыча при этом выпадает из клюва.</li>
+        </ul>
+        <p class="start">Жми <b>A</b> / <b>Enter</b>, чтобы начать</p>
+      </div>
+    </div>
+
+    <div id="pause" class="overlay" hidden>
+      <div class="card">
+        <h1>Пауза</h1>
+        <p><b>Start</b> / <b>A</b> / <b>Esc</b> продолжить</p>
+        <p><b>Y</b> / <b>R</b> начать заново</p>
+      </div>
+    </div>
+
+    <div id="win" class="overlay" hidden>
+      <div class="card">
+        <h1>ГА-ГА-ГА!</h1>
+        <p class="sub">Все пакости сделаны. Садовник в депрессии.</p>
+        <p>Время: <b id="win-time"></b></p>
+        <p class="start">Жми <b>A</b> / <b>Enter</b>, чтобы нагадить ещё раз</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/input.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1b2a17;
+  color: #fff;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+#stage {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#todo {
+  position: absolute;
+  top: 2%;
+  left: 1.5%;
+  width: 26%;
+  padding: 10px 14px;
+  background: #fffbe8;
+  color: #3a2e1a;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.3);
+  transform: rotate(-1.5deg);
+  font-size: clamp(10px, 1.25vw, 16px);
+}
+
+#todo h2 {
+  margin: 0 0 6px;
+  font-size: 1.15em;
+  border-bottom: 2px solid #d8c9a0;
+}
+
+#todo ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+#todo li { margin: 2px 0; }
+
+#todo li.done {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: #9a8c6c;
+}
+
+#pad-status, #sound-hint {
+  position: absolute;
+  left: 1.5%;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  font-size: clamp(10px, 1.1vw, 14px);
+}
+
+#pad-status { bottom: 2%; color: #ffcf6b; }
+#pad-status.ok { color: #9cff6b; }
+#sound-hint { bottom: 7%; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 25, 8, 0.72);
+}
+
+.overlay[hidden], #hud[hidden], #sound-hint[hidden] { display: none; }
+
+.card {
+  max-width: 92%;
+  max-height: 94%;
+  overflow: auto;
+  padding: 2.2% 3%;
+  background: #fffbe8;
+  color: #3a2e1a;
+  border-radius: 10px;
+  box-shadow: 6px 8px 0 rgba(0, 0, 0, 0.35);
+  text-align: center;
+  font-size: clamp(11px, 1.35vw, 18px);
+}
+
+.card h1 {
+  margin: 0;
+  font-size: 3.6em;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #e07a10;
+  text-shadow: 3px 3px 0 #3a2e1a;
+}
+
+.sub { margin: 0.3em 0 1em; font-style: italic; }
+
+.controls {
+  margin: 0 auto 1em;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.controls th, .controls td {
+  padding: 3px 12px;
+  border-bottom: 1px solid #e3d6b0;
+}
+
+.controls td:first-child { font-weight: 700; }
+
+.tips {
+  max-width: 40em;
+  margin: 0 auto 1em;
+  text-align: left;
+}
+
+.start {
+  font-size: 1.3em;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0.45; } }
