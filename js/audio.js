@@ -101,5 +101,35 @@ const Sfx = (() => {
     scare: () => tone('sawtooth', 700, 1200, 0.25, 0.12),
     splash: () => noise(0.35, 2000, 0.8, 0.35),
     win: () => [523, 659, 784, 1046].forEach((f, i) => tone('square', f, f, 0.18, 0.12, i * 0.13)),
+
+    // шутер
+    shoot: () => { noise(0.12, 3000, 0.7, 0.35); tone('square', 180, 60, 0.08, 0.18); },
+    empty: () => tone('square', 1400, 1300, 0.03, 0.12),
+    reload: () => { tone('square', 900, 700, 0.04, 0.1); tone('square', 600, 900, 0.05, 0.12, 0.35); },
+    hit: () => tone('triangle', 1600, 1200, 0.04, 0.12),
+    kill: () => { noise(0.18, 600, 1.5, 0.3); tone('sine', 300, 90, 0.2, 0.2); },
+    hurt: () => { tone('sawtooth', 500, 200, 0.18, 0.25); noise(0.1, 1500, 1, 0.2); },
+    baseHit: () => noise(0.15, 300, 2, 0.35),
+    groan: (vol = 0.15) => {
+      const c = ctx();
+      if (!c) return;
+      const t = c.currentTime;
+      const f = 70 + Math.random() * 50;
+      const o = c.createOscillator();
+      o.type = 'sawtooth';
+      o.frequency.setValueAtTime(f, t);
+      o.frequency.linearRampToValueAtTime(f * 1.3, t + 0.3);
+      o.frequency.linearRampToValueAtTime(f * 0.8, t + 0.9);
+      const lp = c.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.value = 600;
+      const g = c.createGain();
+      env(g, t, Math.max(0.001, vol), 0.2, 0.8);
+      o.connect(lp).connect(g).connect(master);
+      o.start(t);
+      o.stop(t + 1.1);
+    },
+    wave: () => [196, 196, 233, 175].forEach((f, i) => tone('sawtooth', f, f * 0.98, 0.3, 0.12, i * 0.25)),
+    upgrade: () => [659, 880, 1175].forEach((f, i) => tone('triangle', f, f, 0.12, 0.15, i * 0.08)),
   };
 })();

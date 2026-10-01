@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Гусь против зомби</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="view"></div>
+
+  <div id="hud" hidden>
+    <div id="crosshair"><i></i><i></i><i></i><i></i></div>
+    <div id="hitmarker"></div>
+    <div id="vignette"></div>
+
+    <div id="top">
+      <div class="label">ГНЕЗДО</div>
+      <div class="bar"><div id="base-bar"></div></div>
+    </div>
+    <div id="wave-info"><span id="wave-num"></span><span id="wave-left"></span></div>
+    <div id="score"></div>
+
+    <div id="bottom-left">
+      <div class="label">ГУСЬ</div>
+      <div class="bar"><div id="hp-bar"></div></div>
+      <div id="honk">ГА! <span id="honk-state"></span></div>
+    </div>
+    <div id="ammo"><b id="ammo-cur"></b><span id="ammo-max"></span><div id="reload-bar"><div></div></div></div>
+
+    <div id="banner"></div>
+    <div id="pad-status"></div>
+    <div id="sound-hint" hidden>🔇 Кликни мышкой, чтобы был звук</div>
+  </div>
+
+  <div id="title" class="overlay">
+    <div class="card">
+      <h1>ГУСЬ ПРОТИВ ЗОМБИ</h1>
+      <p class="sub">Зомби лезут к гнезду. Гусь с пушкой против. Га.</p>
+      <table class="controls">
+        <tr><th></th><th>🎮 Xbox 360</th><th>⌨️ Клава + мышь</th></tr>
+        <tr><td>Ходить</td><td>Левый стик</td><td>WASD</td></tr>
+        <tr><td>Камера</td><td>Правый стик</td><td>Мышь</td></tr>
+        <tr><td>Стрелять</td><td>RT</td><td>ЛКМ</td></tr>
+        <tr><td>Прицелиться</td><td>LT</td><td>ПКМ</td></tr>
+        <tr><td>ГА! (волна)</td><td>A</td><td>Пробел</td></tr>
+        <tr><td>Перезарядка</td><td>X</td><td>R</td></tr>
+        <tr><td>Бег</td><td>B или L3</td><td>Shift</td></tr>
+        <tr><td>Пауза</td><td>Start</td><td>Esc</td></tr>
+      </table>
+      <p class="tip">Защищай сарай с гнездом. Сломают — конец игры. Между волнами выбираешь апгрейд.</p>
+      <p class="start">Жми <b>A</b> / <b>Enter</b>, чтобы начать</p>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay" hidden>
+    <div class="card">
+      <h1>Пауза</h1>
+      <p><b>Start</b> / <b>A</b> / <b>Esc</b> продолжить</p>
+      <p><b>Y</b> / <b>R</b> заново</p>
+    </div>
+  </div>
+
+  <div id="upgrade" class="overlay" hidden>
+    <div class="card wide">
+      <h1 id="upgrade-title">Волна отбита!</h1>
+      <p class="sub">Выбери апгрейд: стик/крестовина и <b>A</b> (или мышкой)</p>
+      <div id="cards"></div>
+    </div>
+  </div>
+
+  <div id="over" class="overlay" hidden>
+    <div class="card">
+      <h1>ГНЕЗДО ПАЛО</h1>
+      <p class="sub">Зомби сожрали яйца. Гусь в ярости.</p>
+      <p>Волна: <b id="over-wave"></b> &nbsp; Убито: <b id="over-kills"></b> &nbsp; Очки: <b id="over-score"></b></p>
+      <p class="start">Жми <b>A</b> / <b>Enter</b>, чтобы отомстить</p>
+    </div>
+  </div>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="../js/input.js"></script>
+  <script src="../js/audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
